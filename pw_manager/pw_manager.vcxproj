@@ -126,10 +126,12 @@
     <ClCompile Include="ByteToChar.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pw_Gen.cpp" />
+    <ClCompile Include="WcharToInt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ByteToChar.h" />
     <ClInclude Include="Pw_Gen.h" />
+    <ClInclude Include="WcharToInt.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

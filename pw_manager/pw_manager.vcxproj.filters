@@ -24,12 +24,18 @@
     <ClCompile Include="ByteToChar.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="WcharToInt.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pw_Gen.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="ByteToChar.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="WcharToInt.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

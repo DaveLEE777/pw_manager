@@ -2,10 +2,21 @@
 
 #include "Pw_Gen.h"
 #include "ByteToChar.h"
+#include "WcharToInt.h"
 
 #define Pw_Gen_button 1001
+#define Show_Pw 1002
+#define Len_Combo 1003
+#define COMBO_INIT (WM_APP + 1)
+#define Max_Len 64 // 난수 최대 길이
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+
+HWND g_hEditOutput = NULL;
+HWND g_hLenCombo = NULL;
+
+int LenSetting = 32; // 난수 길이 설정
+
 
 // 진입점
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
@@ -33,21 +44,37 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		L"BUTTON",
 		L"Generate",
 		WS_CHILD | WS_VISIBLE,
-		20, 20, 120, 30,
+		60, 20, 120, 30,
 		hWnd,
 		(HMENU)Pw_Gen_button,
 		hInstance,
 		NULL
 	);
-	
-	// 생성된 패스워드 출력
-	HWND hEditOutput = CreateWindow(
-		L"EDIT",
-		L"testtesttest",
-		WS_CHILD | WS_VISIBLE | WS_BORDER | ES_READONLY,
-		160, 20, 400, 30,
+
+	// 길이 선택 옵션
+	g_hLenCombo = CreateWindow(
+		L"COMBOBOX",
+		NULL,
+		WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST,
+		10, 20, 50, 100,
 		hWnd,
-		(HMENU)2,
+		(HMENU)Len_Combo,
+		hInstance,
+		NULL
+	);
+
+	PostMessage(hWnd, COMBO_INIT, 0, 0);
+	
+
+
+	// 생성된 패스워드 출력 (핸들 전역임)
+	g_hEditOutput = CreateWindow(
+		L"EDIT",
+		L"",
+		WS_CHILD | WS_VISIBLE | WS_BORDER | ES_READONLY,
+		200, 20, 600, 30,
+		hWnd,
+		(HMENU)Show_Pw,
 		hInstance,
 		NULL
 	);
@@ -58,7 +85,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		L"BUTTON",
 		L"COPY",
 		WS_CHILD | WS_VISIBLE ,
-		800, 20, 120, 30,
+		820, 20, 120, 30,
 		hWnd,
 		(HMENU)3,
 		hInstance,
@@ -76,29 +103,56 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 }
 
-LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-	switch (msg) {
+LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+	switch (msg)
+	{
+
+	case COMBO_INIT:
+	{
+		SendMessage(g_hLenCombo, CB_ADDSTRING, 0, (LPARAM)L"16");
+		SendMessage(g_hLenCombo, CB_ADDSTRING, 0, (LPARAM)L"24");
+		SendMessage(g_hLenCombo, CB_ADDSTRING, 0, (LPARAM)L"32");
+		SendMessage(g_hLenCombo, CB_ADDSTRING, 0, (LPARAM)L"64");
+
+		SendMessage(g_hLenCombo, CB_SETCURSEL, 2, 0);
+		return 0;
+	}
+
+	case WM_COMMAND:
+	{
+		WORD id = LOWORD(wParam);
+		WORD code = HIWORD(wParam);
+
+		if (id == Pw_Gen_button && code == BN_CLICKED)
+		{
+			BYTE space[Max_Len] = {};
+			wchar_t ppw[Max_Len+1] = {};
+			Pw_Gen(space, LenSetting);
+			ByteToChar(space, ppw, LenSetting);
+			SetWindowTextW(g_hEditOutput, ppw);
+			return 0;
+		}
+		
+		// 길이 버튼
+		if (id == Len_Combo && code == CBN_SELCHANGE)
+		{
+			int sel = (int)SendMessage(g_hLenCombo, CB_GETCURSEL, 0, 0);
+			if (sel != CB_ERR)
+			{
+				wchar_t buf[8] = {};
+				SendMessage(g_hLenCombo, CB_GETLBTEXT, sel, (LPARAM)buf); // 반환값 buf 에 저장
+				LenSetting = WcharToInt(buf);
+				
+			}
+			return 0;
+		}
+		break;
+	}
+
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
-	
-	case WM_COMMAND:
-		if (HIWORD(wParam) == BN_CLICKED) {
-			switch (LOWORD(wParam)) {
-				case Pw_Gen_button:
-					byte space[32] = { 0, };
-					wchar_t ppw[33] = {0,};
-					Pw_Gen(space, 32);
-					ByteToChar(space,ppw,32);
-					MessageBox(hWnd, ppw, L"Result", MB_OK);
-					
-					break;
-			}
-
-		
-		
-		}
 	}
 	return DefWindowProc(hWnd, msg, wParam, lParam);
-} 
-
+}
