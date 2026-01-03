@@ -9,6 +9,7 @@
 #define Len_Combo 1003
 #define COMBO_INIT (WM_APP + 1)
 #define Max_Len 64 // 난수 최대 길이
+#define Copy_Button 1004
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
@@ -87,7 +88,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		WS_CHILD | WS_VISIBLE ,
 		820, 20, 120, 30,
 		hWnd,
-		(HMENU)3,
+		(HMENU)Copy_Button,
 		hInstance,
 		NULL
 	);
@@ -134,6 +135,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			return 0;
 		}
 		
+		// 복사 버튼
+		if (id == Copy_Button && code == BN_CLICKED) {
+			SendMessage(g_hEditOutput, EM_SETSEL, 0, -1);
+			SendMessage(g_hEditOutput, WM_COPY, 0, 0);
+
+		}
+
+
+
+
 		// 길이 버튼
 		if (id == Len_Combo && code == CBN_SELCHANGE)
 		{
@@ -147,6 +158,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			}
 			return 0;
 		}
+
+		
 		break;
 	}
 

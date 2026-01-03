@@ -7,8 +7,16 @@
       "RelativeMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|solutionrelative:pw_manager\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\Pw_Gen.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|solutionrelative:pw_manager\\Pw_Gen.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\ByteToChar.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|solutionrelative:pw_manager\\ByteToChar.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\WcharToInt.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|solutionrelative:pw_manager\\WcharToInt.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\Pw_Gen.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|solutionrelative:pw_manager\\Pw_Gen.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\WcharToInt.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -19,16 +27,8 @@
       "RelativeMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|solutionrelative:pw_manager\\ByteToChar.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\ByteToChar.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|solutionrelative:pw_manager\\ByteToChar.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\Pw_Gen.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|solutionrelative:pw_manager\\Pw_Gen.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\WcharToInt.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|solutionrelative:pw_manager\\WcharToInt.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\Pw_Gen.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E71DECDA-F516-4C25-A5E1-B3470B647A74}|pw_manager\\pw_manager.vcxproj|solutionrelative:pw_manager\\Pw_Gen.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +42,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "WcharToInt.h",
               "DocumentMoniker": "C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\WcharToInt.h",
               "RelativeDocumentMoniker": "pw_manager\\WcharToInt.h",
@@ -54,7 +54,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "WcharToInt.cpp",
               "DocumentMoniker": "C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\WcharToInt.cpp",
               "RelativeDocumentMoniker": "pw_manager\\WcharToInt.cpp",
@@ -62,12 +62,11 @@
               "RelativeToolTip": "pw_manager\\WcharToInt.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-01-02T12:40:15.621Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T12:40:15.621Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "ByteToChar.h",
               "DocumentMoniker": "C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\ByteToChar.h",
               "RelativeDocumentMoniker": "pw_manager\\ByteToChar.h",
@@ -80,7 +79,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ByteToChar.cpp",
               "DocumentMoniker": "C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\ByteToChar.cpp",
               "RelativeDocumentMoniker": "pw_manager\\ByteToChar.cpp",
@@ -88,12 +87,11 @@
               "RelativeToolTip": "pw_manager\\ByteToChar.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-27T10:38:55.818Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-27T10:38:55.818Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Pw_Gen.h",
               "DocumentMoniker": "C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\Pw_Gen.h",
               "RelativeDocumentMoniker": "pw_manager\\Pw_Gen.h",
@@ -105,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Pw_Gen.cpp",
               "DocumentMoniker": "C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\Pw_Gen.cpp",
               "RelativeDocumentMoniker": "pw_manager\\Pw_Gen.cpp",
@@ -113,8 +111,7 @@
               "RelativeToolTip": "pw_manager\\Pw_Gen.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-12-26T05:55:08.615Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-26T05:55:08.615Z"
             },
             {
               "$type": "Document",
@@ -124,7 +121,7 @@
               "RelativeDocumentMoniker": "pw_manager\\main.cpp",
               "ToolTip": "C:\\Users\\Dave LEE\\source\\repos\\pw_manager\\pw_manager\\main.cpp",
               "RelativeToolTip": "pw_manager\\main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIwAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAAAIMAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-12-25T03:15:04.947Z",
               "EditorCaption": ""
