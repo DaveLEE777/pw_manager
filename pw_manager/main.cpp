@@ -1,4 +1,8 @@
 #include<windows.h>
+#include<CommCtrl.h>
+
+#pragma comment(lib, "comctl32.lib")
+
 
 #include "Pw_Gen.h"
 #include "ByteToChar.h"
@@ -10,17 +14,28 @@
 #define COMBO_INIT (WM_APP + 1)
 #define Max_Len 64 // 난수 최대 길이
 #define Copy_Button 1004
+#define Show_Id 1005
+
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
-HWND g_hEditOutput = NULL;
+HWND g_hEditPw = NULL;
 HWND g_hLenCombo = NULL;
+HWND g_hEditId = NULL;
 
 int LenSetting = 32; // 난수 길이 설정
 
 
 // 진입점
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+	INITCOMMONCONTROLSEX icc = {};
+	icc.dwSize = sizeof(INITCOMMONCONTROLSEX);
+	icc.dwICC = ICC_STANDARD_CLASSES;
+	InitCommonControlsEx(&icc);
+	
+	
+	
+	
 	//윈도우 클래스 등록
 	//윈도우의 설계도
 	WNDCLASS wc = {};
@@ -69,9 +84,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 
 	// 생성된 패스워드 출력 (핸들 전역임)
-	g_hEditOutput = CreateWindow(
+	g_hEditPw = CreateWindow(
 		L"EDIT",
-		L"",
+		L"Please push the 'Generate' button to make the new PW",
 		WS_CHILD | WS_VISIBLE | WS_BORDER | ES_READONLY,
 		200, 20, 600, 30,
 		hWnd,
@@ -79,7 +94,28 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		hInstance,
 		NULL
 	);
+
+	// ID 입력란
+	g_hEditId = CreateWindow(
+		L"EDIT",
+		L"",
+		WS_CHILD | WS_VISIBLE | WS_BORDER,
+		200, 60, 600, 30,
+		hWnd,
+		(HMENU)Show_Id,
+		hInstance,
+		NULL
+	);
 	
+	// ID 입력란용 플레이스 홀더
+	SendMessage(
+		g_hEditId,
+		EM_SETCUEBANNER,
+		TRUE,   // TRUE면 포커스 받아도 유지
+		(LPARAM)L"Please Enter the ID"
+	);
+
+
 	// 복사 버튼
 
 	HWND hButton_Copy = CreateWindow(
@@ -131,14 +167,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			wchar_t ppw[Max_Len+1] = {};
 			Pw_Gen(space, LenSetting);
 			ByteToChar(space, ppw, LenSetting);
-			SetWindowTextW(g_hEditOutput, ppw);
+			SetWindowTextW(g_hEditPw, ppw);
 			return 0;
 		}
 		
 		// 복사 버튼
 		if (id == Copy_Button && code == BN_CLICKED) {
-			SendMessage(g_hEditOutput, EM_SETSEL, 0, -1);
-			SendMessage(g_hEditOutput, WM_COPY, 0, 0);
+			SendMessage(g_hEditPw, EM_SETSEL, 0, -1);
+			SendMessage(g_hEditPw, WM_COPY, 0, 0);
 
 		}
 
