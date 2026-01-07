@@ -27,6 +27,12 @@
     <ClCompile Include="WcharToInt.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="DB_Save.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="sqlite3.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pw_Gen.h">
@@ -36,6 +42,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="WcharToInt.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DB_Save.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="sqlite3.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

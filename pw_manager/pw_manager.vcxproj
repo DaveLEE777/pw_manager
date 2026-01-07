@@ -130,13 +130,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ByteToChar.cpp" />
+    <ClCompile Include="DB_Save.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pw_Gen.cpp" />
+    <ClCompile Include="sqlite3.c" />
     <ClCompile Include="WcharToInt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ByteToChar.h" />
+    <ClInclude Include="DB_Save.h" />
     <ClInclude Include="Pw_Gen.h" />
+    <ClInclude Include="sqlite3.h" />
     <ClInclude Include="WcharToInt.h" />
   </ItemGroup>
   <ItemGroup>

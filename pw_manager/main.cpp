@@ -7,14 +7,19 @@
 #include "Pw_Gen.h"
 #include "ByteToChar.h"
 #include "WcharToInt.h"
+#include "DB_Save.h"
 
-#define Pw_Gen_button 1001
-#define Show_Pw 1002
-#define Len_Combo 1003
-#define COMBO_INIT (WM_APP + 1)
 #define Max_Len 64 // 난수 최대 길이
-#define Copy_Button 1004
-#define Show_Id 1005
+
+#define COMBO_INIT (WM_APP + 1)
+#define Pw_Gen_button 1001
+#define Len_Combo 1002
+#define Copy_Button 1003
+#define Save_Button 1004
+
+#define Show_Id 2001
+#define Show_Pw 2002
+#define Show_Site 2003
 
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -22,6 +27,7 @@ LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 HWND g_hEditPw = NULL;
 HWND g_hLenCombo = NULL;
 HWND g_hEditId = NULL;
+HWND g_hEditSite = NULL;
 
 int LenSetting = 32; // 난수 길이 설정
 
@@ -115,6 +121,27 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		(LPARAM)L"Please Enter the ID"
 	);
 
+	// SITE 입력란
+	g_hEditSite = CreateWindow(
+		L"EDIT",
+		L"",
+		WS_CHILD | WS_VISIBLE | WS_BORDER,
+		200, 100, 600, 30,
+		hWnd,
+		(HMENU)Show_Site,
+		hInstance,
+		NULL
+	);
+
+	// SITE 입력란용 플레이스 홀더
+	SendMessage(
+		g_hEditSite,
+		EM_SETCUEBANNER,
+		TRUE,   // TRUE면 포커스 받아도 유지
+		(LPARAM)L"Please Enter the Name of Site"
+	);
+
+
 
 	// 복사 버튼
 
@@ -128,7 +155,24 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		hInstance,
 		NULL
 	);
+
+	// 저장 버튼
+
+	HWND hButton_Save = CreateWindow(
+		L"BUTTON",
+		L"SAVE",
+		WS_CHILD | WS_VISIBLE,
+		820, 100, 120, 30,
+		hWnd,
+		(HMENU)Save_Button,
+		hInstance,
+		NULL
+	);
 	
+	if (!DB_Init()) {
+		MessageBox(NULL, L"DB ERROR", L"ERROR", MB_ICONERROR);
+		return -1;
+	}
 	
 	// 메세지 루프
 	ShowWindow(hWnd, nCmdShow);
@@ -178,7 +222,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 		}
 
+		// 저장 버튼
+		if (id == Save_Button && code == BN_CLICKED) {
+			wchar_t idBuf[64];
+			wchar_t pwBuf[128];  // 확장 가능성 염두
+			wchar_t siteBuf[64];
 
+			GetWindowTextW(g_hEditId, idBuf, 64);
+			GetWindowTextW(g_hEditPw, pwBuf, 128);
+			GetWindowTextW(g_hEditSite, siteBuf, 64);
+
+			DB_Save(idBuf, pwBuf, siteBuf);
+			MessageBox(hWnd, L"Saved", L"OK", MB_OK);
+		}
 
 
 		// 길이 버튼
