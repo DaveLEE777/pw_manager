@@ -7,11 +7,12 @@
 #include "Pw_Gen.h"
 #include "ByteToChar.h"
 #include "WcharToInt.h"
-#include "DB_Save.h"
+#include "DB.h"
 
 #define Max_Len 64 // 난수 최대 길이
 
 #define COMBO_INIT (WM_APP + 1)
+#define LIST_INIT (WM_APP + 2)
 #define Pw_Gen_button 1001
 #define Len_Combo 1002
 #define Copy_Button 1003
@@ -21,6 +22,8 @@
 #define Show_Pw 2002
 #define Show_Site 2003
 
+#define Show_List 2004
+
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
@@ -28,6 +31,7 @@ HWND g_hEditPw = NULL;
 HWND g_hLenCombo = NULL;
 HWND g_hEditId = NULL;
 HWND g_hEditSite = NULL;
+HWND g_hListView = NULL;
 
 int LenSetting = 32; // 난수 길이 설정
 
@@ -36,7 +40,7 @@ int LenSetting = 32; // 난수 길이 설정
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	INITCOMMONCONTROLSEX icc = {};
 	icc.dwSize = sizeof(INITCOMMONCONTROLSEX);
-	icc.dwICC = ICC_STANDARD_CLASSES;
+	icc.dwICC = ICC_STANDARD_CLASSES | ICC_LISTVIEW_CLASSES;
 	InitCommonControlsEx(&icc);
 	
 	
@@ -168,6 +172,35 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		hInstance,
 		NULL
 	);
+
+	// DB 리스트 출력 부분
+	g_hListView = CreateWindow(
+		WC_LISTVIEWW,
+		L"",
+		WS_CHILD | WS_VISIBLE | LVS_REPORT | LVS_SINGLESEL,
+		10, 160, 950, 300,
+		hWnd,
+		(HMENU)Show_List,
+		hInstance,
+		nullptr
+	);
+	// 칼럼 추가
+	LVCOLUMN col = {};
+	col.mask = LVCF_TEXT | LVCF_WIDTH;
+
+	col.cx = 250;
+	col.pszText = const_cast<LPWSTR>(L"SITE");
+	ListView_InsertColumn(g_hListView, 0, &col);
+
+	col.cx = 200;
+	col.pszText = const_cast<LPWSTR>(L"ID");
+	ListView_InsertColumn(g_hListView, 1, &col);
+
+	col.cx = 500;
+	col.pszText = const_cast<LPWSTR>(L"PASSWORD");
+	ListView_InsertColumn(g_hListView, 2, &col);
+
+	PostMessage(hWnd, LIST_INIT, 0, 0);
 	
 	if (!DB_Init()) {
 		MessageBox(NULL, L"DB ERROR", L"ERROR", MB_ICONERROR);
@@ -188,6 +221,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
 	{
+
+	case LIST_INIT:
+		DB_Load_All(g_hListView);
+		
 
 	case COMBO_INIT:
 	{
@@ -234,6 +271,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 			DB_Save(idBuf, pwBuf, siteBuf);
 			MessageBox(hWnd, L"Saved", L"OK", MB_OK);
+			DB_Load_All(g_hListView);
 		}
 
 

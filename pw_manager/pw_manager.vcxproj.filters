@@ -27,7 +27,7 @@
     <ClCompile Include="WcharToInt.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="DB_Save.cpp">
+    <ClCompile Include="DB.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="sqlite3.c">
@@ -44,7 +44,7 @@
     <ClInclude Include="WcharToInt.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="DB_Save.h">
+    <ClInclude Include="DB.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="sqlite3.h">
